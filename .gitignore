@@ -1,6 +1,8 @@
 # Local .terraform directories
-**/.terraform
+.terraform
+tmp
 ./*.out
+./*/*.tmp
 **/inventory.*
 **/ansible_inventory
 **/ansible_public_ip.txt

@@ -1,3 +1,4 @@
 #!/bin/bash
+cd terraform
 terraform apply -destroy
-rm -rf ./tmp terraform/terraform.tfstate*
+
