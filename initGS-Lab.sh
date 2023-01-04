@@ -47,23 +47,3 @@ cd ..
 clustername=`aws eks list-clusters |grep ${replaceName} |xargs`
 aws eks update-kubeconfig --name ${clustername}
 kubectl get svc
-
-# Deploy k8s dashboard
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-kubectl apply -f yaml/dashboard-adminuser.yaml
-kubectl apply -f yaml/clusterRoleBinding.yaml
-
-# Deploy LB for k8s dashboard
-kubectl apply -f yaml/k8s-dashboard-lb.yaml
-
-# Deploy LB for grafana
-kubectl apply -f yaml/grafana-lb.yaml
-
-# Export token for k8s dashboard
-kubectl -n kubernetes-dashboard create token admin-user > k8s-dashboard-token.txt
-echo >> k8s-dashboard-token.txt
-
-
-
-
-
