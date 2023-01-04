@@ -1,73 +1,3 @@
-#
-# EKS Worker Nodes Resources
-#  * IAM role allowing Kubernetes actions to access other AWS services
-#  * EKS Node Group to launch worker nodes
-#
-
-resource "aws_iam_role" "primary-node" {
-  name = "${local.primary.name}-node"
-
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-POLICY
-}
-
-resource "aws_iam_role_policy" "primary-node-PolicyAutoScaling" {
-  name = "eks-nodegroup-ng-maneksami2-PolicyAutoScaling"
-  policy = jsonencode(
-    {
-      Statement = [
-        {
-          Action = [
-            "autoscaling:DescribeAutoScalingGroups",
-            "autoscaling:DescribeAutoScalingInstances",
-            "autoscaling:DescribeLaunchConfigurations",
-            "autoscaling:DescribeTags",
-            "autoscaling:SetDesiredCapacity",
-            "autoscaling:TerminateInstanceInAutoScalingGroup",
-            "ec2:DescribeLaunchTemplateVersions",
-          ]
-          Effect   = "Allow"
-          Resource = "*"
-        },
-      ]
-      Version = "2012-10-17"
-    }
-  )
-  role = aws_iam_role.primary-node.name
-}
-
-resource "aws_iam_role_policy_attachment" "primary-node-AmazonEKSWorkerNodePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.primary-node.name
-}
-
-resource "aws_iam_role_policy_attachment" "primary-node-AmazonEKS_CNI_Policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.primary-node.name
-}
-
-resource "aws_iam_role_policy_attachment" "primary-node-AmazonEC2ContainerRegistryReadOnly" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.primary-node.name
-}
-
-resource "aws_iam_role_policy_attachment" "primary-node-Amazon-AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.primary-node.name
-}
-
 
 resource "aws_launch_template" "primary" {
   instance_type = local.primary.eks_worker-node-instance_type
@@ -125,3 +55,73 @@ resource "aws_eks_node_group" "primary" {
     profile = local.primary.profile
   }
 }
+
+# resource "aws_autoscaling_group_tag" "name" {
+#   # for_each = toset(
+#   #   [for asg in flatten(
+#   #     [for resources in aws_eks_node_group.primary.resources : resources.autoscaling_groups]
+#   #   ) : asg.name]
+#   # )
+
+#   autoscaling_group_name = "${local.primary.name}-autoscaling_group"
+
+
+#   tag {
+#     key   = "Name"
+#     value = "${local.primary.name}-worker"
+
+#     propagate_at_launch = true
+#   }
+# }
+
+# resource "aws_autoscaling_group_tag" "owner" {
+#   # for_each = toset(
+#   #   [for asg in flatten(
+#   #     [for resources in aws_eks_node_group.primary.resources : resources.autoscaling_groups]
+#   #   ) : asg.name]
+#   # )
+
+#   autoscaling_group_name = "${local.primary.name}-autoscaling_group"
+
+#   tag {
+#     key   = "Owner"
+#     value = "${local.primary.Owner}"
+
+#     propagate_at_launch = true
+#   }
+# }
+
+# resource "aws_autoscaling_group_tag" "project" {
+#   # for_each = toset(
+#   #   [for asg in flatten(
+#   #     [for resources in aws_eks_node_group.primary.resources : resources.autoscaling_groups]
+#   #   ) : asg.name]
+#   # )
+
+#   autoscaling_group_name = "${local.primary.name}-autoscaling_group"
+
+
+#   tag {
+#     key   = "Project"
+#     value = "${local.primary.name}"
+
+#     propagate_at_launch = true
+#   }
+# }
+
+# resource "aws_autoscaling_group_tag" "profile" {
+#   # for_each = toset(
+#   #   [for asg in flatten(
+#   #     [for resources in aws_eks_node_group.primary.resources : resources.autoscaling_groups]
+#   #   ) : asg.name]
+#   # )
+
+#   autoscaling_group_name = "${local.primary.name}-autoscaling_group"
+
+#   tag {
+#     key   = "profile"
+#     value = "${local.primary.profile}"
+
+#     propagate_at_launch = true
+#   }
+# }

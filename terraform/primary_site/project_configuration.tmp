@@ -10,6 +10,7 @@ locals {
     eks_worker-node-instance_type  = "t3a.large"
     ec2_linux_jumper_instance_type = "t3a.small"
     profile                        = "prod"
+    eks_version                    = "1.21"
 
   }
   # AWS Auto shutdown policy

@@ -1,3 +1,6 @@
+variable "vpc_cidr" {}
+variable "subnets" {}
+
 resource "aws_vpc" "primary" {
   cidr_block = var.vpc_cidr
 

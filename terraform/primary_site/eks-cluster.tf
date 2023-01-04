@@ -1,31 +1,3 @@
-resource "aws_iam_role" "primary-cluster" {
-  name = "${local.primary.name}"
-
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "eks.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-POLICY
-}
-
-resource "aws_iam_role_policy_attachment" "primary-cluster-AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.primary-cluster.name
-}
-
-resource "aws_iam_role_policy_attachment" "primary-cluster-AmazonEKSServicePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role       = aws_iam_role.primary-cluster.name
-}
 
 resource "aws_security_group" "primary-cluster" {
   name        = "${local.primary.name}"
@@ -66,7 +38,7 @@ resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
 resource "aws_eks_cluster" "primary" {
   name     = "${local.primary.name}"
   role_arn = aws_iam_role.primary-cluster.arn
-
+  version  = "${local.primary.eks_version}"
   vpc_config {
     security_group_ids = [aws_security_group.primary-cluster.id]
     subnet_ids         = aws_subnet.primary[*].id

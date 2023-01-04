@@ -1,33 +1,4 @@
 #!/bin/bash
-# Get lab name from user
-# read -p 'Please enter your name: ' replaceName
-# mkdir -p tmp
-
-# sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-# sudo yum install -y yum-utils unzip wget git terraform
-# # wget terraform code from s3
-
-# # Install kubectl
-# cd tmp
-# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-# sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-# cd ..
-
-# # Install helm
-# cd tmp
-# curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-# chmod 700 get_helm.sh
-# ./get_helm.sh
-# cd ..
-
-# # Install awscli
-# cd tmp
-# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# unzip -o awscliv2.zip
-# sudo ./aws/install --update
-# cd ..
-
-# Provision EKS cluster using terraform
 clear
 # Set AWS CSM-LAB credentials
 echo "Testing AWS credentials ..."
@@ -39,7 +10,7 @@ if [[ `echo "${awscreds}" |grep Arn |wc -l` = 0 ]];then
 fi 
 echo ${awscreds} |json_reformat
 echo
-read -r -p "Continue with the above AWS crdentailes? [y/N] " response
+read -r -p "Continue with the above AWS crdentailes? [y/n] " response
 case "$response" in
     [yY][eE][sS]|[yY]) 
         
@@ -50,7 +21,12 @@ case "$response" in
         ;;
 esac
 
-read -p 'Please enter a project name (i.e: GMTS380-James): ' replaceName
+read -p 'Please enter a project name (i.e: GSTM-375-James): ' replaceName
+if [[ -z "${replaceName}" ]];then
+    echo "Project name cannot be empty, aborted."
+    exit
+fi
+echo Starting provision EKS eluster
 mkdir -p tmp
 cp terraform/primary_site/project_configuration.tmp terraform/primary_site/project_configuration.tf
 
@@ -65,11 +41,28 @@ if [[ ${tf_ready} = 0 ]];then
     exit
 fi
 terraform apply "create.out"
+cd ..
 
-#Configure aws 
+# Configure aws 
 clustername=`aws eks list-clusters |grep ${replaceName} |xargs`
 aws eks update-kubeconfig --name ${clustername}
 kubectl get svc
+
+# Deploy k8s dashboard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+kubectl apply -f yaml/dashboard-adminuser.yaml
+kubectl apply -f yaml/clusterRoleBinding.yaml
+
+# Deploy LB for k8s dashboard
+kubectl apply -f yaml/k8s-dashboard-lb.yaml
+
+# Deploy LB for grafana
+kubectl apply -f yaml/grafana-lb.yaml
+
+# Export token for k8s dashboard
+kubectl -n kubernetes-dashboard create token admin-user > k8s-dashboard-token.txt
+echo >> k8s-dashboard-token.txt
+
 
 
 
