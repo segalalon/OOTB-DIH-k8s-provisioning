@@ -2,6 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: grafana-lb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Owner=CSM, Project=CSM
 spec:
   
   type: LoadBalancer
