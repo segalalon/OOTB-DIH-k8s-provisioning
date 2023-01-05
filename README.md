@@ -13,7 +13,7 @@
 9. Instance Type: t3a.medium
 10. key pair name: OOTB-DIH-Provisioning
 11. Click Launch and wait for the VM to be available.
-12. Connect to the VM: ssh -i OOTB-DIH-Provisioning.pem centos@<public-ip>
+12. Connect to the VM: ssh -i OOTB-DIH-Provisioning.pem centos@public-ip
 13. chmod +x run.sh
 14. ./run.sh (will pull the project from s3 and prepare it)
 15. If you are requested to updatw AWS, cd OOTB-DIH-k8s-provisioning-main and update setAWSEnv.sh
@@ -24,15 +24,6 @@
 2. Update the AWS credentials in setAWSEnv.sh
 3. Run ./initGS-Lab.sh and follow the instructions
 
-
-### Deleting  EKS cluster
-
-1. Run scripts/scripts/destroy-eks-lab.sh
-
-
-### Purge k8s cluster, without delteing the EKS itself
-
-1. Run uninstall-dih-umbrella.sh
 
 
 ## Installing dih-umbrella when EKS is already available
@@ -47,6 +38,15 @@
 
 Note: You can deploy space and feeder using helm/ops-ui/rest
 
+------------------------------------------------------------------
 
+### Purge k8s cluster, without delteing the EKS itself
+
+1. Run uninstall-dih-umbrella.sh
+
+
+### Deleting  EKS cluster
+
+1. Run scripts/scripts/destroy-eks-lab.sh
 
 
