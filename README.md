@@ -16,11 +16,13 @@
 12. Connect to the VM: ssh -i OOTB-DIH-Provisioning.pem centos@<public-ip>
 13. chmod +x run.sh
 14. ./run.sh (will pull the project from s3 and prepare it)
+15. If you are requested to updatw AWS, cd OOTB-DIH-k8s-provisioning-main and update setAWSEnv.sh
 
 ### Deploying EKS cluster with dih 16.2.1
 
-1. Update the AWS credentials in setAWSEnv.sh
-2. Run initGS-Lab.sh and follow the instructions
+1. cd OOTB-DIH-k8s-provisioning-main
+2. Update the AWS credentials in setAWSEnv.sh
+3. Run ./initGS-Lab.sh and follow the instructions
 
 
 ### Deleting  EKS cluster
