@@ -42,5 +42,8 @@ if [[ ${tf_ready} = 0 ]];then
 fi
 terraform apply "create.out"
 cd ..
-echo "TF-CSM-LAB-$replaceName" > clusteName.txt
+echo "TF-CSM-LAB-$replaceName" > clusterName.txt
+cd scripts
 ./config_kubectl_to_eks.sh
+cd ..
+
