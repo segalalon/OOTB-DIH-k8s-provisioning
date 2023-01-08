@@ -3,20 +3,21 @@
 ## Creating a Jumper machine
 
 1. Login to AWS console
-2. Select Irelan region
+2. Select Ireland region (eu-west-1)
 3. Select EC2 
-4. Move to AMIs
-5. Search for: AMI ID: ami-09008b9a6ec234ab8  (AMI NAME: CSM-Jumper-EKS)
-6. Right-click "Launch instance from AMI"
-7. Provide a Name
-8. Click on Add addional tags and to add: Owner=xxx, Project=xxx and Profile=prod
-9. Instance Type: t3a.medium
-10. key pair name: OOTB-DIH-Provisioning
-11. Click Launch and wait for the VM to be available.
-12. Connect to the VM: ssh -i OOTB-DIH-Provisioning.pem centos@public-ip
-13. chmod +x run.sh
-14. ./run.sh (will pull the project from s3 and prepare it)
-15. If you are requested to updatw AWS, cd OOTB-DIH-k8s-provisioning-main and update setAWSEnv.sh
+4. Move to Instances page
+5. On the top right corner click on the orange button (down arrow)
+6. 
+7. Right-click "Launch instance from AMI"
+8. Provide a Name
+9. Click on Add addional tags and to add: Owner=xxx, Project=xxx and Profile=prod
+10. Instance Type: t3a.medium
+11. key pair name: OOTB-DIH-Provisioning
+12. Click Launch and wait for the VM to be available.
+13. Connect to the VM: ssh -i OOTB-DIH-Provisioning.pem centos@public-ip
+14. chmod +x run.sh
+15. ./run.sh (will pull the project from s3 and prepare it)
+16. If you are requested to updatw AWS, cd OOTB-DIH-k8s-provisioning-main and update setAWSEnv.sh
 
 ### Deploying EKS cluster with dih 16.2.1
 
