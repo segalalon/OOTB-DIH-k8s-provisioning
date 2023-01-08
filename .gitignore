@@ -7,7 +7,7 @@ tmp
 **/ansible_inventory
 **/ansible_public_ip.txt
 **/aws/*.out
-
+./k8s-dashboard-token.txt
 # .tfstate files
 *.tfstate
 *.tfstate.*

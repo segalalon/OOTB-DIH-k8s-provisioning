@@ -1,1 +1,0 @@
-helm install demo gigaspaces/xap --version=16.2.1 --set License="Product=InsightEdge;Version=16.2;Type=ENTERPRISE;Customer=Gigaspaces_K8sAWSEnvTraining_DEV;Expiration=2025-Jan-01;Hash=PPSPYPQcOrQZvNSfORgd"
