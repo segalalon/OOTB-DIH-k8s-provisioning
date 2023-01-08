@@ -42,8 +42,5 @@ if [[ ${tf_ready} = 0 ]];then
 fi
 terraform apply "create.out"
 cd ..
-
-# Configure aws 
-clustername=`aws eks list-clusters |grep ${replaceName} |xargs`
-aws eks update-kubeconfig --name ${clustername}
-kubectl get svc
+echo "TF-CSM-LAB-$replaceName" > clusteName.txt
+./config_kubectl_to_eks.sh

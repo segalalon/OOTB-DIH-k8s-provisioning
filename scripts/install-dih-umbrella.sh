@@ -9,7 +9,7 @@ helm install xap gigaspaces/xap --version=16.2.1 --set license="Product=InsightE
 ./install-k8s-dashboard.sh
 ./get-k8s-dashboard-token.sh
 kubectl apply -f ../yaml/grafana-lb.yaml
-kubectl apply -f ../yaml/yaml/managers-lb.yaml
+kubectl apply -f ../yaml/managers-lb.yaml
 kubectl annotate service xap-xap-manager-service Project=CSM,Owner=CSM
 ./get-ui-urls.sh
 echo "It will take a while for the load balancer to be available ..."

@@ -24,7 +24,8 @@
 
 1. cd OOTB-DIH-k8s-provisioning-main
 2. Update the AWS credentials in setAWSEnv.sh
-3. Run ./initGS-Lab.sh and follow the instructions
+3. Run: source ./setAWSEnv.sh
+4. Run: ./initGS-Lab.sh and follow the instructions
 
 
 
