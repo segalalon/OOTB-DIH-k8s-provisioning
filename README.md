@@ -1,23 +1,24 @@
 ## OOTB-DIH-k8s-Provisioning
 
+### Prerequisties
+* ssh key (OOTB-DIH-Provisioning.pem)
+* AWS credentials
+
 ## Creating a Jumper machine
 
 1. Login to AWS console
 2. Select Ireland region (eu-west-1)
 3. Select EC2 
 4. Move to Instances page
-5. On the top right corner click on the orange button (down arrow)
-6. 
-7. Right-click "Launch instance from AMI"
-8. Provide a Name
-9. Click on Add addional tags and to add: Owner=xxx, Project=xxx and Profile=prod
-10. Instance Type: t3a.medium
-11. key pair name: OOTB-DIH-Provisioning
-12. Click Launch and wait for the VM to be available.
-13. Connect to the VM: ssh -i OOTB-DIH-Provisioning.pem centos@public-ip
-14. chmod +x run.sh
-15. ./run.sh (will pull the project from s3 and prepare it)
-16. If you are requested to updatw AWS, cd OOTB-DIH-k8s-provisioning-main and update setAWSEnv.sh
+5. On the top right corner click on the orange button (press the down arrow)
+6. Click on 'Launch instance from template'
+7. In Choose a launch template - search for 'CSM-LAB-Jumper-Template' (lt ID: lt-0082366cc2663ae52)
+8. Scroll down to 'Resource tags' and modify the 'Name' tag. It's high recommnded to concatenate your name (i.e: CSM-LAB-Jumper-James)
+9. Click on 'Launce instance' orange button.
+10. You should see a note like 'Successfully initiated launch of instance (i-xxxxxxxxxx)', click the link to move to ec2 instance page
+11. Wait a few minutes for the instance to be available, locate your instance public ip.
+12. Connect to your jumper machine via: ssh -i "OOTB-DIH-Provisioning.pem" centos@Your-Public-IP  (OOTB-DIH-Provisioning.pem will be provided by your lab admin)
+13. Run the command ./run.sh and follow the instructions
 
 ### Deploying EKS cluster with dih 16.2.1
 
