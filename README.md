@@ -30,7 +30,8 @@
 
 ## Installing dih-umbrella when EKS is already available
 
-1. Run scripts/install-dih-umbrella.sh
+1. cd scripts
+2. Run ./install-dih-umbrella.sh
 
 
 ## Deploying data-feeder PU
@@ -49,4 +50,5 @@ Note: You can deploy space and feeder using helm/ops-ui/rest
 
 ### Deleting  EKS cluster
 
-1. Run scripts/scripts/destroy-eks-lab.sh
+1. cd scripts
+2. run ./destroy-eks-lab.sh

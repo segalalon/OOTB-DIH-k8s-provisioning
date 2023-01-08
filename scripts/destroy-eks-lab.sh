@@ -1,4 +1,4 @@
 #!/bin/bash
-cd terraform
+cd ../terraform
 terraform apply -destroy
 
