@@ -12,7 +12,7 @@
 4. Move to Instances page
 5. On the top right corner click on the orange button (press the down arrow)
 6. Click on 'Launch instance from template'
-7. In Choose a launch template - search for 'CSN-LAB-EKS-JUMPER-template' (lt ID: lt-06b30ccb021738c60)
+7. In Choose a launch template - search for 'CSM-LAB-EKS-JUMPER-template' (lt ID: lt-079d823907147c80b)
 8. Scroll down to 'Resource tags' and modify the 'Name' tag. It's high recommended to concatenate your name (i.e: CSM-LAB-Jumper-James)
 9. Click on 'Launch instance' orange button.
 10. You should see a note like 'Successfully initiated launch of instance (i-xxxxxxxxxx)', click the link to move to ec2 instance page
