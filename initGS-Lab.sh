@@ -26,7 +26,7 @@ if [[ -z "${replaceName}" ]];then
     echo "Project name cannot be empty, aborted."
     exit
 fi
-echo Starting provision EKS eluster
+echo "Starting provision EKS cluster"
 mkdir -p tmp
 cp terraform/primary_site/project_configuration.tmp terraform/primary_site/project_configuration.tf
 
