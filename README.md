@@ -23,7 +23,7 @@
 
 ### Deploying EKS cluster with dih 16.2.1
 
-1. cd OOTB-DIH-k8s-provisioning-main
+1. cd OOTB-DIH-k8s-provisioning
 2. Update the AWS credentials in setAWSEnv.sh
 3. Run: source ./setAWSEnv.sh
 4. Run: ./initGS-Lab.sh and follow the instructions
@@ -47,7 +47,8 @@ Note: You can deploy space and feeder using helm/ops-ui/rest
 
 ### Purge k8s cluster, without deleting the EKS itself
 
-1. Run uninstall-dih-umbrella.sh
+1. cd scripts
+2. Run ./uninstall-dih-umbrella.sh
 
 
 ### Deleting  EKS cluster
