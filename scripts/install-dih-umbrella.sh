@@ -1,4 +1,7 @@
 #!/bin/bash
+SCRIPT=$(realpath "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+cd $SCRIPTPATH
 
 # Deploying xap umbrella
 source ../setAWSEnv.sh

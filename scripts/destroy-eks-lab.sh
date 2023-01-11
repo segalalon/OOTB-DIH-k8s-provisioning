@@ -1,4 +1,7 @@
 #!/bin/bash
+SCRIPT=$(realpath "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+cd $SCRIPTPATH
 read -r -p "Do you want to destroy your EKS lab ?[y/n] " response
 case "$response" in
     [yY][eE][sS]|[yY]) 

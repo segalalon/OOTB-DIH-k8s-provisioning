@@ -1,6 +1,9 @@
 #!/bin/bash
+SCRIPT=$(realpath "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+cd $SCRIPTPATH
 # Delete load balancer services
-#kubectl delete -f ../yaml/manager-lb.yaml
+
 echo "Deleting LB service ..."
 kubectl delete -f ../yaml/k8s-dashboard-lb.yaml
 kubectl delete -f ../yaml/grafana-lb.yaml

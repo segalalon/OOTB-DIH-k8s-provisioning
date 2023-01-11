@@ -18,8 +18,8 @@
 10. You should see a note like 'Successfully initiated launch of instance (i-xxxxxxxxxx)', click the link to move to ec2 instance page
 11. Wait a few minutes for the instance to be available, locate your instance public ip.
 12. Use OOTB-DIH-Provisioning.pem, make sure to grant this file the right permmisions (chmod 400 OOTB-DIH-Provisioning.pem) the pem file will be provided separately.
-13. Connect to your jumper machine via: ssh -i "OOTB-DIH-Provisioning.pem" centos@Your-Public-IP  
-14. Run the command ./run.sh 
+13. Connect to your jumper machine via: ssh -i "OOTB-DIH-Provisioning.pem" centos@Your-Public-IP
+15. Run the command ./run.sh
 
 ### Deploying EKS cluster with dih 16.2.1
 
