@@ -41,7 +41,7 @@
 1. Deploy a new space (name space: 'space')
 2. Deploy jars/data-feeder.jar
 
-Note: You can deploy space and feeder using helm/ops-ui/rest
+Note: You can deploy space and feeder using one of helm / ops-ui / rest
 
 ------------------------------------------------------------------
 
