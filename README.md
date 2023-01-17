@@ -24,9 +24,7 @@
 ### Deploying EKS cluster with dih 16.2.1
 
 1. cd OOTB-DIH-k8s-provisioning
-2. Update the AWS credentials in setAWSEnv.sh
-3. Run: source ./setAWSEnv.sh
-4. Run: ./initGS-Lab.sh and follow the instructions
+2. Run: ./initGS-Lab.sh and follow the instructions
 
 
 
