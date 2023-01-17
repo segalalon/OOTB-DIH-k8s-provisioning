@@ -4,7 +4,7 @@ metadata:
   name: k8s-dashboard-lb
   namespace: kubernetes-dashboard
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Owner=CSM, Project=CSM-LAB
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Owner=CSM, Project=CSM-LAB, Name=EKS-CSM-k8s-Dashboard-lb
 spec:
   
   type: LoadBalancer

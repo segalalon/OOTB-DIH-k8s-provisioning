@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: manager-loadbalancer
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Owner=CSM2, Project=CSM2
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Owner=CSM2, Project=CSM2, Name=EKS-CSM-opsManager-lb
 spec:
   type: LoadBalancer
   selector:
