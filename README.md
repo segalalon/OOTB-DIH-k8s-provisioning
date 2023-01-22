@@ -36,10 +36,19 @@
 
 ## Deploying data-feeder PU
 
-1. Deploy a new space (name space: 'space')
-2. Deploy jars/data-feeder.jar
-
-Note: You can deploy space and feeder using helm/ops-ui/rest
+1. Deploy a new space (with name: 'space')
+> * using OPS-UI: On the left pane click 'Services'
+> * Click the '+' sign on the upper right corner
+> * Choose 'Deploy Space Service'
+> * Enter service name: 'space'
+> * Click Apply
+2. Deploy a new feeder service
+> * using OPS-UI: On the left pane click 'Services'
+> * Click the '+' sign on the upper right corner
+> * Choose 'Deploy Stateless Service'
+> * Enter service name: 'space-feeder'
+> * For deployment type choose URL https://github.com/GigaSpaces-ProfessionalServices/OOTB-DIH-k8s-provisioning/blob/main/jars/data-feeder.jar
+> * Click Apply
 
 ------------------------------------------------------------------
 
