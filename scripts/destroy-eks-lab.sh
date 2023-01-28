@@ -13,6 +13,7 @@ case "$response" in
         exit
         ;;
 esac
+./uninstall-dih-umbrella.sh
 cd ../terraform
 terraform plan -destroy -out destroy.out
 terraform apply "destroy.out"
