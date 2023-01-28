@@ -12,7 +12,7 @@ helm install xap gigaspaces/xap --version=16.2.1 --set license="Product=InsightE
 ./install-k8s-dashboard.sh
 ./get-k8s-dashboard-token.sh
 kubectl apply -f ../yaml/grafana-lb.yaml
-kubectl apply -f ../yaml/managers-lb.yaml
+#kubectl apply -f ../yaml/managers-lb.yaml
 
 # Annotate ops-manager LoadBalancer
 cluster_name=$(cat ../clusterName.txt)
