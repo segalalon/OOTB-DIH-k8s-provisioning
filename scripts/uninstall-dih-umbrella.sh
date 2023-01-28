@@ -7,7 +7,7 @@ cd $SCRIPTPATH
 echo "Deleting LB service ..."
 kubectl delete -f ../yaml/k8s-dashboard-lb.yaml
 kubectl delete -f ../yaml/grafana-lb.yaml
-kubectl delete -f ../yaml/managers-lb.yaml
+#kubectl delete -f ../yaml/managers-lb.yaml
 
 # Delete xap umbrella
 echo "Deleting DIH umbrella ..."
