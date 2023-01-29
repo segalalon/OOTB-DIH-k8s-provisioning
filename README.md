@@ -43,11 +43,13 @@
 > * Enter service name: 'space'
 > * Click Apply
 2. Deploy a new feeder service
+> * Download, from below url, the file data-feeder.jar to the local machine:
+    https://github.com/GigaSpaces-ProfessionalServices/OOTB-DIH-k8s-provisioning/blob/main/jars/data-feeder.jar
 > * using OPS-UI: On the left pane click 'Services'
 > * Click the '+' sign on the upper right corner
 > * Choose 'Deploy Stateless Service'
 > * Enter service name: 'space-feeder'
-> * For deployment type choose URL https://github.com/GigaSpaces-ProfessionalServices/OOTB-DIH-k8s-provisioning/blob/main/jars/data-feeder.jar
+> * For deployment type choose File and browse to the data-feeder.jar location 
 > * Click Apply
 
 ------------------------------------------------------------------
