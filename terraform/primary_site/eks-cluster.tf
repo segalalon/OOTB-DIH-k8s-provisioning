@@ -48,6 +48,12 @@ resource "aws_eks_cluster" "primary" {
     aws_iam_role_policy_attachment.primary-cluster-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.primary-cluster-AmazonEKSServicePolicy,
   ]
+  tags = {
+      
+      Owner   = "${local.primary.Owner}"
+      Project = "${local.primary.name}"
+      
+    }
 }
 
 output "eks-cluster-name" {
