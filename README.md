@@ -13,12 +13,13 @@
 5. On the top right corner click on the orange button (press the down arrow)
 6. Click on 'Launch instance from template'
 7. In Choose a launch template - search for 'CSM-LAB-EKS-JUMPER-template' (lt ID: lt-079d823907147c80b)
-8. Scroll down to 'Resource tags' and modify the 'Name' tag. It's high recommended to concatenate your name (i.e: CSM-LAB-Jumper-James)
-9. Click on 'Launch instance' orange button.
-10. You should see a note like 'Successfully initiated launch of instance (i-xxxxxxxxxx)', click the link to move to ec2 instance page
-11. Wait a few minutes for the instance to be available, locate your instance public ip.
-12. Use OOTB-DIH-Provisioning.pem, make sure to grant this file the right permmisions (chmod 400 OOTB-DIH-Provisioning.pem) the pem file will be provided separately.
-13. Connect to your jumper machine via: ssh -i "OOTB-DIH-Provisioning.pem" centos@Your-Public-IP
+8. Scroll down to Key pair, choose key or create a new one.
+9. Scroll down to 'Resource tags' and modify the 'Name' tag. It's high recommended to concatenate your name (i.e: CSM-LAB-Jumper-James)
+10. Click on 'Launch instance' orange button.
+11. You should see a note like 'Successfully initiated launch of instance (i-xxxxxxxxxx)', click the link to move to ec2 instance page
+12. Wait a few minutes for the instance to be available, locate your instance public ip.
+13. Use pem file (ssh private key) from step #8, make sure to grant this file the right permissions (chmod 400 file.pem).
+14. Connect to your jumper machine via: ssh -i "file.pem" centos@Your-Public-IP
 15. Run the command ./run.sh
 
 ### Deploying EKS cluster with dih 16.2.1
