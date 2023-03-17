@@ -5,3 +5,11 @@ module "primary_site" {
  
 }
 
+terraform {
+  backend "s3" {
+    bucket = "csm-training"
+    #key    = "OOTB-DIH-k8s-provisioning/Terraform-State-files"
+    region = "eu-west-1"
+    shared_credentials_file = "~/.aws/credentials"
+  }
+}

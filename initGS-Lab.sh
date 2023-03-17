@@ -34,7 +34,7 @@ cp terraform/primary_site/project_configuration.tmp terraform/primary_site/proje
 sed -i "s/replaceName/$replaceName/g" terraform/primary_site/project_configuration.tf
 sed -i "s/replaceOwner/$replaceName/g" terraform/primary_site/project_configuration.tf
 cd terraform
-terraform init
+terraform init -backend-config="key=OOTB-DIH-k8s-provisioning/Terraform-State-files/${replaceName}.tfstate"
 tf_ready=$(terraform plan -out create.out |grep "run the following command to apply" |wc -l)
 if [[ ${tf_ready} = 0 ]];then
     echo "Terraform preparation has been failed, please check the errors."

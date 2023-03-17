@@ -20,5 +20,5 @@ manager:
    ha: false
    java:
       heap: limit-300Mi
-   license: "Product=InsightEdge;Version=16.2;Type=ENTERPRISE;Customer=Gigaspaces_K8sAWSEnvTraining_DEV;Expiration=2025-Jan-01;Hash=PPSPYPQcOrQZvNSfORgd"
-license: "Product=InsightEdge;Version=16.2;Type=ENTERPRISE;Customer=Gigaspaces_K8sAWSEnvTraining_DEV;Expiration=2025-Jan-01;Hash=PPSPYPQcOrQZvNSfORgd"
+   license: "Product=InsightEdge;Version=16.3;Type=ENTERPRISE;Customer=Gigaspaces_K8sAWSEnvTraining_DEV;Expiration=2025-Jan-01;Hash=rPxQNW1IUOO4iPoMNPON"
+license: "Product=InsightEdge;Version=16.3;Type=ENTERPRISE;Customer=Gigaspaces_K8sAWSEnvTraining_DEV;Expiration=2025-Jan-01;Hash=rPxQNW1IUOO4iPoMNPON"
