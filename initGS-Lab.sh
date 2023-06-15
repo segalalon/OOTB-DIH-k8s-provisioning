@@ -8,7 +8,7 @@ if [[ `echo "${awscreds}" |grep Arn |wc -l` = 0 ]];then
     echo "Please edit the setAWSEnv.sh file and run again."
     exit
 fi 
-echo ${awscreds} |json_reformat
+echo ${awscreds} |jq #json_reformat
 echo
 read -r -p "Continue with the above AWS crdentailes? [y/n] " response
 case "$response" in
@@ -31,8 +31,8 @@ mkdir -p tmp
 cp terraform/primary_site/project_configuration.tmp terraform/primary_site/project_configuration.tf
 
 # Update the project name for this deployment
-sed -i "s/replaceName/$replaceName/g" terraform/primary_site/project_configuration.tf
-sed -i "s/replaceOwner/$replaceName/g" terraform/primary_site/project_configuration.tf
+sed -i '' "s/replaceName/${replaceName}/g" terraform/primary_site/project_configuration.tf
+sed -i '' "s/replaceOwner/${replaceName}/g" terraform/primary_site/project_configuration.tf
 cd terraform
 terraform init -backend-config="key=OOTB-DIH-k8s-provisioning/Terraform-State-files/${replaceName}.tfstate"
 tf_ready=$(terraform plan -out create.out |grep "run the following command to apply" |wc -l)

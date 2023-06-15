@@ -1,9 +1,9 @@
 locals {
   primary = {
     region                         = "eu-west-1"
-    name                           = "TF-CSM-LAB-Shmulik"
+    name                           = "TF-CSM-LAB-ShmulikTest"
     ec2_profile                    = "wsus" # see the notes below
-    Owner                          = "TF-CSM-LAB-Shmulik"
+    Owner                          = "TF-CSM-LAB-ShmulikTest"
     ec2_image_id                   = "ami-04f5641b0d178a27a" #centos7.9
     ec2_win_image_id               = "ami-0604ab8d9bd0e2ab5" #Microsoft Windows Server 2019 Base
     ssh_key_name                   = "ssh-key-not-required"
