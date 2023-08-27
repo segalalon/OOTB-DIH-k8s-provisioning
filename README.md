@@ -26,6 +26,12 @@
 
 1. cd OOTB-DIH-k8s-provisioning
 2. Run: ./initGS-Lab.sh and follow the instructions
+   ```
+    If you encounter an error for missing jq run the following commands:
+    # sudo yum install epel-release -y
+    # sudo yum ypdate -y
+    # sudo yum install jq -y
+   ```
 
 
 
